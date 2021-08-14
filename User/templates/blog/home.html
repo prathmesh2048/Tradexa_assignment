@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+      <br>
+    <h1>HELLO {{request.user}} !</h1>
+    <br>
+
+    <a href="{% url 'User:create' %}" class="btn btn-success" >Create Post</a>
+    <br><br>
+    {% for post in posts  %}
+      {{post.user}}
+      {{post.text}}
+      {{post.title}}
+      <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h3 class="card-title">{{post.title}}</h3>
+            <br>
+            <h6 class="card-subtitle">Created by -> {{post.user}}</h6>
+            <p class="card-text">{{post.text}}</p>
+            <p class="card-text"><b>Created at -></b>{{post.created}}</p>
+            <p class="card-text"><b>updated at -></b>{{post.updated}}</p>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
